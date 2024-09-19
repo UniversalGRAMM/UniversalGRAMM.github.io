@@ -1,35 +1,39 @@
 ---
 title: Home
 layout: home
+nav_order: 1
+description: "Universal GRAMM"
+permalink: /
 ---
 
-This is a *bare-minimum* template to create a Jekyll site that uses the [Just the Docs] theme. You can easily set the created site to be published on [GitHub Pages] – the [README] file explains how to do that, along with other details.
+# Introduction to UGRAMM:
 
-If [Jekyll] is installed on your computer, you can also build and preview the created site *locally*. This lets you test changes before committing them, and avoids waiting for GitHub Pages.[^1] And you will be able to deploy your local build to a different platform than GitHub Pages.
+<div style="text-align: center;">
+  <a href="/getting-started" class="btn btn-primary fs-5 mb-4 mb-md-0 mr-2">Get started now</a>
+  <a href="https://github.com/UniversalGRAMM/UGRAMM" class="btn fs-5 mb-4 mb-md-0">View it on GitHub</a>
+</div>
 
-More specifically, the created site:
+<div style="text-align: justify;">
+GRAMM (GRAph Minor Mapping) is a novel CGRA mapping technique that has demonstrated an 80x CAD runtime speedup over other mapping methods <a href="https://ieeexplore.ieee.org/document/10296406">[Zhou et al.(2023)]</a>. GRAMM is based on the graph minoring concept from graph theory, which states that if we can transform graph G into H by removing its nodes and/or edges and as well by contracting edges in G, then graph H is a minor of graph G. In the graph minor example in Fig.1, red edges in graph G are removed and edges within blue circles are contracted, resulting in graph H as a minor of graph G. <br> <br>
+</div>
 
-- uses a gem-based approach, i.e. uses a `Gemfile` and loads the `just-the-docs` gem
-- uses the [GitHub Pages / Actions workflow] to build and publish the site on GitHub Pages
+<div style="text-align: center;">
+    <img src="assets/minor_example.png" alt="Fig 1. Graph Minor example" style="border: 1px solid black; width: 400px;">
+    <figcaption style="font-size: 14px; color: #555;">Fig 1. Graph Minor example</figcaption>
+</div>
 
-Other than that, you're free to customize sites that you create with this template, however you like. You can easily change the versions of `just-the-docs` and Jekyll it uses, as well as adding further plugins.
+<div style="text-align: justify;">
+This repository contains a more general version of GRAMM known as UGRAMM (Universal GRAph Minor Mapper), which can not only be used in CGRA mapping but as well could be easily incorporated in any other applications such as ASIC/FPGA packing, etc. <br> <br>
+</div>
 
-[Browse our documentation][Just the Docs] to learn more about how to use this theme.
+{: .note }
+<b> If referred, kindly cite the research using: </b> <br>
+G. Zhou, M. Stojilović and J. H. Anderson, "GRAMM: Fast CGRA Application Mapping Based on A Heuristic for Finding Graph Minors," 2023 33rd International Conference on Field-Programmable Logic and Applications (FPL), Gothenburg, Sweden, 2023, pp. 305-310, doi: 10.1109/FPL60245.2023.00052.
 
-To get started with creating a site, simply:
 
-1. click "[use this template]" to create a GitHub repository
-2. go to Settings > Pages > Build and deployment > Source, and select GitHub Actions
-
-If you want to maintain your docs in the `docs` directory of an existing project repo, see [Hosting your docs from an existing project repo](https://github.com/just-the-docs/just-the-docs-template/blob/main/README.md#hosting-your-docs-from-an-existing-project-repo) in the template README.
-
-----
-
-[^1]: [It can take up to 10 minutes for changes to your site to publish after you push the changes to GitHub](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll#creating-your-site).
-
-[Just the Docs]: https://just-the-docs.github.io/just-the-docs/
-[GitHub Pages]: https://docs.github.com/en/pages
-[README]: https://github.com/just-the-docs/just-the-docs-template/blob/main/README.md
 [Jekyll]: https://jekyllrb.com
-[GitHub Pages / Actions workflow]: https://github.blog/changelog/2022-07-27-github-pages-custom-github-actions-workflows-beta/
-[use this template]: https://github.com/just-the-docs/just-the-docs-template/generate
+[Markdown]: https://daringfireball.net/projects/markdown/
+[Liquid]: https://github.com/Shopify/liquid/wiki
+[Front matter]: https://jekyllrb.com/docs/front-matter/
+[Jekyll configuration]: https://jekyllrb.com/docs/configuration/
+[ugramm repo]: https://github.com/UniversalGRAMM/UGRAMM
