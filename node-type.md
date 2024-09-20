@@ -33,9 +33,8 @@ Note that for a vertex, the `CellType` must be either `FuncCell`, `RouteCell`, o
     - `49 [G_Name="LS.w32.c7.r5.memport.outPinA", G_CellType=PinCell, G_NodeType=out];`
 - **CellType** : "RouteCell" :: **NodeType** : "MUX"
     - `20 [G_Name="pe.w32.c1.r0.crossbar_mux_0", G_CellType=RouteCell, G_NodeType=Mux];`
-- As demonstrated above, the device model can include all three types of cells defined in the `device-model-file.dot` input. This is explained in more detail in the [device model file documentation](/docs/device-model-file.html).
+- As demonstrated above, the device model can include all three types of cells defined in the `device-model-file.dot` input. This is explained in more detail in the [device model file documentation](/device-model-file.html).
 
 ## Application-Graph Vertex Examples:
 
-- As outlined in the [application file input documentation](/docs/), the application file defaults to having all vertices of the `FuncCell` type. Other important attributes of this graph are also discussed there.
-
+- As outlined in the [application file input documentation](/application-file.html ), the application file defaults to having all vertices to be of `FuncCell` type. Other important attributes of this graph are also discussed there.

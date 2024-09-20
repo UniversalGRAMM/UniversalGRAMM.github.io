@@ -8,7 +8,7 @@ nav_order: 3
 
 <div style="text-align: center;">
     <img src="assets/dfgExample.png" alt="Fig 1. Data Flow Graph (DFG) Example" style="border: 1px solid black; width: 150px;">
-    <figcaption style="font-size: 14px; color: #555;">Fig 1. Data Flow Example</figcaption>
+    <figcaption style="font-size: 14px; color: #555;">Fig 1. Data Flow Graph (DFG) Example</figcaption>
 </div>
 
 - In a CGRA, the input application is usually represented as a Data Flow Graph (DFG), where vertices correspond to operations like ADD, SUB, and MUL, and the edges between these vertices indicate the dependencies among these operations.
@@ -42,6 +42,8 @@ FMUL_9 [label="{FMUL_9}", opcode=FMUL, shape=record, type=op];
 //Edge definition:
 Load_0 -> FMUL_9  [driver=outPinA, load=inPinA]; 
 ```
+
+## Required and optional attributes in application-dot file.
 
 - As shown above, vertices and edges have specific attributes or properties. Some attributes are essential for GRAMM to function correctly.
     - Node Attributes:

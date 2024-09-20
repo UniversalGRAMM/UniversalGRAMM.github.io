@@ -34,7 +34,7 @@ permalink: /getting-started
 ```
 
 <div style="text-align: center;">
-    <img src="assets/UGRAMM.png" alt="Fig 1. UGRAMM inputs" style="border: 1px solid black; width: 400px;">
+    <img src="assets/UGRAMM.png" alt="Fig 1. UGRAMM inputs" style="border: 1px solid black; width: 550px;">
     <figcaption style="font-size: 14px; color: #555;">Fig 1.UGRAMM inputs</figcaption>
 </div>
 
@@ -47,7 +47,7 @@ permalink: /getting-started
 
 - We have created a helper script (`scripts/device_model_gen.py`) to generate device model files for CGRA architectures such as RIKEN and ADRES.
 - The UGRAMM repository includes a variety of benchmarks for CGRA applications in the `Kernels/` folder, featuring Stencil, Convolution, and FFT benchmarks.
-- While UGRAMM is tested for the CGRA mapping process, it can also be used with other applications, provided that users ensure the input to GRAMM is in a format compatible with UGRAMM, as specified in this documentation.
+- While UGRAMM has been tested for the CGRA mapping process, it can also be utilized for other applications with minimal modifications. Users must ensure that the input files are in a format compatible with UGRAMM, as outlined in this documentation.
     - We have designed UGRAMM with generalized features to accommodate a wide range of applications. However, if you need specific functionality or have any questions, please create an issue related to your requirements on the UGRAMM GitHub repository.
 
 ---

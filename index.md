@@ -9,9 +9,9 @@ permalink: /
 # Introduction to UGRAMM:
 
 <div style="text-align: center;">
-  <a href="docs/getting-started" class="btn btn-primary fs-5 mb-4 mb-md-0 mr-2">Get started now</a>
+  <a href="/getting-started" class="btn btn-primary fs-5 mb-4 mb-md-0 mr-2">Get started now</a>
   <a href="https://github.com/UniversalGRAMM/UGRAMM" class="btn btn-primary fs-5 mb-4 mb-md-0 mr-2">View it on GitHub</a>
-  <a href="docs/doxygen/" class="btn btn-primary fs-5 mb-4 mb-md-0 mr-2">Doxygen</a>
+  <a href="/doxygen/" class="btn btn-primary fs-5 mb-4 mb-md-0 mr-2">Doxygen</a>
 </div> 
 
 
