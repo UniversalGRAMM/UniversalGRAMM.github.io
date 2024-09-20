@@ -1,4 +1,4 @@
 # UGRAMM-DOCs
 
-This repository contains the documentation website for GRAMM.
+This repository contains the documentation website for UGRAMM.
 
