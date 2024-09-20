@@ -33,10 +33,17 @@ permalink: /getting-started
   --config arg          UGRAMM config file
 ```
 
+<div style="text-align: center;">
+    <img src="assets/UGRAMM.png" alt="Fig 1. UGRAMM inputs" style="border: 1px solid black; width: 400px;">
+    <figcaption style="font-size: 14px; color: #555;">Fig 1.UGRAMM inputs</figcaption>
+</div>
+
 - UGRAMM primarily accepts three types of files:
     - **afile** [REQUIRED]: An application-graph file in Graphviz dot format [(ref)](https://graphviz.org/doc/info/lang.html). This file describes the input application to be mapped onto the device model (mapping here refers to checking if this smaller graph is a minor of the larger device-model graph).
     - **dfile** [REQUIRED]: A device-model file in Graphviz dot format. This file represents the device model of the hardware, and the tool checks if the application graph (H) is a minor of this device model graph (G).
     - **config** [OPTIONAL]: An optional configuration file that can be used in scenarios such as skipping the placement of specific nodes or locking certain nodes placement.
+
+---
 
 - We have created a helper script (`scripts/device_model_gen.py`) to generate device model files for CGRA architectures such as RIKEN and ADRES.
 - The UGRAMM repository includes a variety of benchmarks for CGRA applications in the `Kernels/` folder, featuring Stencil, Convolution, and FFT benchmarks.
@@ -75,6 +82,8 @@ permalink: /getting-started
   - The successful mapping results will be saved in `unpositioned_dot_output.png` and `positioned_dot_output.png`.
 
 ## Running UGRAMM:
+
+- The following command maps the `conv_nounroll_Balance` benchmark onto an 8x8 RIKEN CGRA using a seed value of 15.
 
 > ./run_ugramm.sh 15 8 8 Kernels/Conv_Balance/conv_nounroll_Balance.dot config.json
 

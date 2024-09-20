@@ -1,13 +1,13 @@
 ---
 title: input-application
 parent: UGRAMM
-nav_order: 1
+nav_order: 3
 ---
 
 # Input application for UGRAMM:
 
 <div style="text-align: center;">
-    <img src="assets/dfgExample.png" alt="Fig 1. Data Flow Example" style="border: 1px solid black; width: 150px;">
+    <img src="assets/dfgExample.png" alt="Fig 1. Data Flow Graph (DFG) Example" style="border: 1px solid black; width: 150px;">
     <figcaption style="font-size: 14px; color: #555;">Fig 1. Data Flow Example</figcaption>
 </div>
 
@@ -31,3 +31,29 @@ nav_order: 1
 │   ├── Stencil_Balance
 │   └── Stencil_nonBalance
 ```
+
+- These benchmarks are defined in the Graphviz DOT format [(ref)](https://graphviz.org/doc/info/lang.html). 
+
+```
+//Node/Vertex definition:
+Load_0 [label="{Load_0}", opcode=input, shape=record]; 
+FMUL_9 [label="{FMUL_9}", opcode=FMUL, shape=record, type=op];
+
+//Edge definition:
+Load_0 -> FMUL_9  [driver=outPinA, load=inPinA]; 
+```
+
+- As shown above, vertices and edges have specific attributes or properties. Some attributes are essential for GRAMM to function correctly.
+    - Node Attributes:
+        - **label**: **[Required]** Specifies the operation name in the application graph (e.g., `[label="{Load_0}"]`).
+        - **opcode**: **[Required]** Specifies the operation's opcode (e.g., `[opcode="input"]`).
+        - **placementX**: **[Optional]** Specifies the fixed X-coordinate for node placement (e.g., `[placementX="2.0"]`).
+        - **placementY**: **[Optional]** Specifies the fixed Y-coordinate for node placement (e.g., `[placementY="5.0"]`).
+    - Edge Attributes:
+        - **driver**: **[Required]** Specifies the driver pin to use for the edge (e.g., `[driver="outPinA"]`).
+        - **load**: **[Required]** Specifies the load pin to use for the edge (e.g., `[load="inPinA"]`).
+        - **Example**: `Load_0 -> FMUL_9 [driver=outPinA, load=inPinA];`
+            - In this example, UGRAMM selects the `outPinA` of the device-model node where `Load_0` is mapped and routes it to the `inPinA` of the device-model node where `FMUL_9` is mapped.
+            - For UGRAMM to function as expected, the device model must have nodes with pins defined as `outPinA`, `inPinA`, `B`, etc.
+        - **latency**: **[Optional]** Specifies the latency requirement for the edge (e.g., `[latency="2.0"]`).
+- The **[Required]** node and edge attributes must be clearly defined in the `application.dot` file when used as an afile input to ensure UGRAMM functions correctly.

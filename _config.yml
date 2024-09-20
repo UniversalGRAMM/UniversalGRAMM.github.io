@@ -10,7 +10,7 @@ plugins:
 aux_links:
   UGRAMM Repository: https://github.com/UniversalGRAMM/UGRAMM
 
-color_scheme: dark
+color_scheme: nil
 
 callouts_level: quiet # or loud
 callouts:
