@@ -1,13 +1,13 @@
 ---
 title: Graph-Vertex-Generalization
-parent: UGRAMM
+layout: default
 nav_order: 1
 ---
 
 # Graph Vertex Generalization:
 
 <div style="text-align: center;">
-    <img src="assets/Graph_Vertex.png" alt="Fig 1.Graph Vertex Generalization" style="border: 1px solid black; width: 500px;">
+    <img src="../../assets/Graph_Vertex.png" alt="Fig 1.Graph Vertex Generalization" style="border: 1px solid black; width: 500px;">
     <figcaption style="font-size: 14px; color: #555;">Fig 1.Graph Vertex Generalization</figcaption>
 </div>
 

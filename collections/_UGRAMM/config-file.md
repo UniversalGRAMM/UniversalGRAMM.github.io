@@ -1,6 +1,6 @@
 ---
 title: config-file-input
-parent: UGRAMM
+layout: default
 nav_order: 4
 ---
 
@@ -36,7 +36,7 @@ nav_order: 4
 [2024-09-15 21:41:52.355] [GRAMM] [info] [H] Ignoring placement for application node :: {Const_35|float32=19.00} 
 ```
 <div style="text-align: center;">
-    <img src="assets/e1.jpeg" alt="Fig 1. Mapping output of example 1 (Constants skipped for placement and route)" style="border: 1px solid black; width: 550px;">
+    <img src="../../assets/e1.jpeg" alt="Fig 1. Mapping output of example 1 (Constants skipped for placement and route)" style="border: 1px solid black; width: 550px;">
     <figcaption style="font-size: 14px; color: #555;">Fig 1. Mapping output of Example 1 (Constants skipped for placement and route)</figcaption>
 </div>
 ---
@@ -63,11 +63,11 @@ nav_order: 4
 ```
 - output:
 <div style="text-align: center;">
-    <img src="assets/e21.jpeg" alt="Fig 2. Skipping of specified nodeType and opcodes in Example3" style="border: 1px solid black; width: 550px;">
+    <img src="../../assets/e21.jpeg" alt="Fig 2. Skipping of specified nodeType and opcodes in Example3" style="border: 1px solid black; width: 550px;">
     <figcaption style="font-size: 14px; color: #555;">Fig 2. Skipping of specified nodeType and opcodes in Example 3</figcaption>
 </div>
 
 <div style="text-align: center;">
-    <img src="assets/e22.jpeg" alt="Fig 3. Mapping output of Example 3 (Constants, Memport, and FMUL skipped for placement and route)" style="border: 1px solid black; width: 550px;">
+    <img src="../../assets/e22.jpeg" alt="Fig 3. Mapping output of Example 3 (Constants, Memport, and FMUL skipped for placement and route)" style="border: 1px solid black; width: 550px;">
     <figcaption style="font-size: 14px; color: #555;">Fig 3. Mapping output of Example 3 (Constants, Memport, and FMUL skipped for placement and route)</figcaption>
 </div>

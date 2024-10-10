@@ -1,6 +1,6 @@
 ---
 title: supported-pragmas
-parent: UGRAMM
+layout: default
 nav_order: 5
 ---
 
@@ -28,7 +28,7 @@ nav_order: 5
 - `void readDeviceModelPragma()` and `void readApplicationGraphPragma()` handles reading of Pragmas from both the graphs, and also checks the compatibility and correctness of these pragmas.
 
 <div style="text-align: center;">
-    <img src="assets/pragma_check.png" alt="Fig 1. Pragma Check Example" style="border: 1px solid black; width: 550px;">
+    <img src="../../assets/pragma_check.png" alt="Fig 1. Pragma Check Example" style="border: 1px solid black; width: 550px;">
     <figcaption style="font-size: 14px; color: #555;">Fig 1. Pragma Check Example</figcaption>
 </div>
 

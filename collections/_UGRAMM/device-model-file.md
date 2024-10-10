@@ -1,6 +1,6 @@
 ---
 title: device-model-input
-parent: UGRAMM
+layout: default
 nav_order: 2
 ---
 
@@ -24,18 +24,18 @@ nav_order: 2
 - Script generation example for RIKEN CGRA architecture:
     - RIKEN hardware architecture:
 <div style="text-align: center;">
-    <img src="assets/Riken_arch.png" alt="Fig 1. RIKEN hardware architecture" style="border: 1px solid black; width: 350px;">
+    <img src="../../assets/Riken_arch.png" alt="Fig 1. RIKEN hardware architecture" style="border: 1px solid black; width: 350px;">
     <figcaption style="font-size: 14px; color: #555;">Fig 1. RIKEN hardware architecture</figcaption>
 </div>
 
 <div style="text-align: center;">
-    <img src="assets/riken_pe.png" alt="Fig 2. RIKEN Processing Element (PE)" style="border: 1px solid black; width: 350px;">
+    <img src="../../assets/riken_pe.png" alt="Fig 2. RIKEN Processing Element (PE)" style="border: 1px solid black; width: 350px;">
     <figcaption style="font-size: 14px; color: #555;">Fig 2. RIKEN Processing Element (PE)</figcaption>
 </div>
 
 - Visualize ouput of RIKEN PE by device model gen script: 
 <div style="text-align: center;">
-    <img src="assets/pe_dot_graph.jpeg" alt="Fig 3. Visualize graph ouput of RIKEN PE" style="border: 1px solid black; width: 350px;">
+    <img src="../../assets/pe_dot_graph.jpeg" alt="Fig 3. Visualize graph ouput of RIKEN PE" style="border: 1px solid black; width: 350px;">
     <figcaption style="font-size: 14px; color: #555;">Fig 3. Visualize graph ouput of RIKEN PE</figcaption>
 </div>
 

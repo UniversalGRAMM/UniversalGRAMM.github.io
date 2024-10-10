@@ -1,13 +1,13 @@
 ---
 title: input-application
-parent: UGRAMM
+layout: default
 nav_order: 3
 ---
 
 # Input application for UGRAMM:
 
 <div style="text-align: center;">
-    <img src="assets/dfgExample.png" alt="Fig 1. Data Flow Graph (DFG) Example" style="border: 1px solid black; width: 150px;">
+    <img src="../../assets/dfgExample.png" alt="Fig 1. Data Flow Graph (DFG) Example" style="border: 1px solid black; width: 150px;">
     <figcaption style="font-size: 14px; color: #555;">Fig 1. Data Flow Graph (DFG) Example</figcaption>
 </div>
 

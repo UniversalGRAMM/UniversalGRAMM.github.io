@@ -12,6 +12,25 @@ aux_links:
 
 color_scheme: nil
 
+always_show_subnavigation: true
+
+collections_dir: collections
+
+collections:
+  UGRAMM:
+    output: true
+  Tutorials:
+    output: true
+
+just_the_docs:
+  collections:
+    UGRAMM:
+      name: UGRAMM Documentation
+      nav_fold: false
+    Tutorials:
+      name: Tutorials
+      nav_fold: false
+
 callouts_level: quiet # or loud
 callouts:
   highlight:
