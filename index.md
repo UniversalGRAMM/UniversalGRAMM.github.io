@@ -10,8 +10,9 @@ permalink: /
 
 <div style="text-align: center;">
   <a href="/getting-started" class="btn btn-primary fs-5 mb-4 mb-md-0 mr-2">Get started now</a>
+  <a href="/Tutorials/Tutorial-1" class="btn fs-5 mb-4 mb-md-0 mr-2">Tutorials</a> 
   <a href="https://github.com/UniversalGRAMM/UGRAMM" class="btn btn-primary fs-5 mb-4 mb-md-0 mr-2">View it on GitHub</a>
-  <a href="/UGRAMM/" class="btn btn-primary fs-5 mb-4 mb-md-0 mr-2">Doxygen</a>
+  <a href="/UGRAMM/" class="btn fs-5 mb-4 mb-md-0 mr-2">Doxygen</a>
 </div> 
 
 

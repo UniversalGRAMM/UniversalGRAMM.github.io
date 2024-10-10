@@ -7,7 +7,7 @@ nav_order: 0
 # Mapping Digital Circuits to Hardware Modules
 
 {: .note }
-Please refer to the Getting Started Guide (available at: https://universalgramm.github.io/getting-started) of UGRAMM before attempting this tutorial.
+Please refer to the [Getting Started Guide](https://universalgramm.github.io/getting-started) of UGRAMM before attempting this tutorial.
 
 # Table of Contents
 
@@ -22,13 +22,9 @@ UGRAMM is a flexibile tool which can be used not only for CGRA mapping but for a
 
 In this tutorial we have mapped a digital design input into to Hardware Modules, mapping here corresponds to one-to-one matching of a particular operation from the input digital design to the hardware units available in the device-model.
 
-```mermaid
-    graph TD
-        AFILE(**AFILE**: Application file describing digital design input) --> **Universal-GRAMM**
-        DFILE(**DFILE**: Device-model graph file describing hardware modules circuitry) --> **Universal-GRAMM**
-        CFILE(**CFILE**: Config file, optional in case) -.-> **Universal-GRAMM**
-```
-
+<div style="text-align: center;">
+  <img src="UGRAMM_inputs.png" alt=" " width="720"/>
+</div>
 
 ## Application-dot file:
 
@@ -77,7 +73,8 @@ For instance, a gate is represented as a FuncCell in the application file. A sup
   - Both FuncCells must have the required pins defined in the device-model dot file with matching names; otherwise, UGRAMM will throw a FATAL ERROR.
 
 
-```
+
+```js
  /* ------- Application graph pragma ------- 
 [SupportedOps] = {GATE, AND};           //Supported Operation by "GATE" FuncCell is "AND" 
 [SupportedOps] = {IO, INPUT, OUTPUT};   //Supported Operations by "IO" FuncCell are "INPUT", "OUTPUT"
@@ -96,6 +93,7 @@ Input2 -> And1  [driver="outPinA", load="inPinB"];
 And1 -> Output  [driver="outPinA", load="inPinA"];
 }
 ```
+
 
 ## Device-model file:
 
@@ -116,19 +114,9 @@ For example, the connection between the **Gate FuncCell** shown in the Fig 3. an
 
 Each cell-type in UGRAMM has its associated opcodes. For example, a **PinCell** may include opcodes such as **IN** and **OUT** describing Input pin cells and Output pin cells respectively. The details are outlined as follows:
 
-```mermaid
-graph TD
-    A[CELL] --> B[FuncCell]
-    A --> C[RouteCell]
-    A --> D[PinCell]
-    
-    B --> E[OpCode: GATE]
-    B --> L[OpCode: IO]
-    C --> F[OpCode: MUX]
-    C --> G[OpCode: REG]
-    D --> H[OpCode: IN]
-    D --> I[OpCode: OUT]
-```
+<div style="text-align: center;">
+  <img src="cell_type.png" alt=" " width="720"/>
+</div>
 
 ### PRAGMA Section
 
@@ -138,7 +126,7 @@ It is important to ensure that the operations defined in the device model align 
 
 For example, the PRAGMA section is defined as follows:
 
-```plaintext
+```js
 /* ------- Device model pragma ------- 
 [SupportedOps] = {GATE, AND};  
 [SupportedOps] = {IO, INPUT, OUTPUT};
@@ -157,8 +145,8 @@ For example, the PRAGMA section is defined as follows:
 
 <details>
 <summary> <b> Device Model Pragma Code </b> </summary>
-
-```plaintext
+<div class="code-example" markdown="1">
+```js
 /* ------- Device model pragma ------- 
 [SupportedOps] = {GATE, AND};  
 [SupportedOps] = {IO, INPUT, OUTPUT};
@@ -217,6 +205,7 @@ strict digraph  {
 14 -> 15;
 }
 ```
+</div>
 </details>
 
 ## Running UGRAMM:
@@ -229,6 +218,7 @@ cd tutorial/tut1/
 dot -Tpng unpositioned_dot_output.dot -o unpositioned_dot_output.png
 neato -Tpng positioned_dot_output.dot -o positioned_dot_output.png 
 ```
+
 ### unpositioned_dot_output 
 - This dot-file does not contains user provided co-ordinates of the device-model node cells.
 - This file also displays the input application graph for which UGRAMM was executed.

@@ -10,7 +10,7 @@ plugins:
 aux_links:
   UGRAMM Repository: https://github.com/UniversalGRAMM/UGRAMM
 
-color_scheme: nil
+color_scheme: dark
 
 always_show_subnavigation: true
 
@@ -31,6 +31,11 @@ just_the_docs:
       name: Tutorials
       nav_fold: false
 
+mermaid:
+  # Version of mermaid library
+  # Pick an available version from https://cdn.jsdelivr.net/npm/mermaid/
+  version: "9.1.3"
+  
 callouts_level: quiet # or loud
 callouts:
   highlight:
