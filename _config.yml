@@ -28,7 +28,9 @@ just_the_docs:
   collections:
     UGRAMM:
       name: UGRAMM Documentation
-      nav_fold: true
+      nav_fold: false
+      Config_File:
+        nav_fold: false
     Tutorials:
       name: Tutorials
       nav_fold: false
