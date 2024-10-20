@@ -29,11 +29,11 @@ just_the_docs:
     UGRAMM:
       name: UGRAMM Documentation
       nav_fold: false
-      Config_File:
-        nav_fold: false
     Tutorials:
       name: Tutorials
       nav_fold: false
+    Config_File:
+        nav_fold: false
 
 mermaid:
   # Version of mermaid library
