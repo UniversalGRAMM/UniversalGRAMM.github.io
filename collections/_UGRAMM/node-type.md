@@ -3,7 +3,7 @@ title: Graph-Vertex-Generalization
 layout: default
 nav_order: 1
 description: "Graph vertex generalization guide for UGRAMM"
-permalink: /node-type
+permalink: /UGRAMM-Documentations/node-type
 ---
 
 # Graph Vertex Generalization:

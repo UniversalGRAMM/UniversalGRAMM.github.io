@@ -2,6 +2,8 @@
 title: Tutorial-1
 layout: default
 nav_order: 0
+description: "Tutorial 1 on Introduction to UGRAMM"
+permalink: /Tutorials/Tutorial-1
 ---
 
 # Mapping Digital Circuits to Hardware Modules

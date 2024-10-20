@@ -19,8 +19,6 @@ collections_dir: collections
 collections:
   UGRAMM:
     output: true
-  GRAMM:
-    output: true
   Tutorials:
     output: true
 
@@ -28,9 +26,6 @@ just_the_docs:
   collections:
     UGRAMM:
       name: UGRAMM Documentation
-      nav_fold: false
-    GRAMM:
-      name: GRAMM Documentation
       nav_fold: false
     Tutorials:
       name: Tutorials

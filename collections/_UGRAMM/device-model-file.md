@@ -3,7 +3,7 @@ title: device-model-input
 layout: default
 nav_order: 2
 description: "Device model file guide for UGRAMM"
-permalink: /device-model-file
+permalink: /UGRAMM-Documentations/device-model-file
 ---
 
 # Device model input:
