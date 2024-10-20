@@ -2,6 +2,8 @@
 title: input-application
 layout: default
 nav_order: 3
+description: "Application graph file guide for UGRAMM"
+permalink: /application-file
 ---
 
 # Input application for UGRAMM:

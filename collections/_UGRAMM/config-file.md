@@ -2,6 +2,8 @@
 title: config-file-input
 layout: default
 nav_order: 4
+description: "Config file guide for UGRAMM"
+permalink: /config-file
 ---
 
 ## UGRAMM config file:

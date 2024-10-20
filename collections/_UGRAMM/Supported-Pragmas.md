@@ -2,6 +2,8 @@
 title: supported-pragmas
 layout: default
 nav_order: 5
+description: "Pragma support guide for UGRAMM"
+permalink: /Supported-Pragmas
 ---
 
 # Pragma Support:
