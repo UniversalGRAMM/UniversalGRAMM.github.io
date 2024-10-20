@@ -21,12 +21,14 @@ collections:
     output: true
   Tutorials:
     output: true
+  Config_File:
+    output: true
 
 just_the_docs:
   collections:
     UGRAMM:
       name: UGRAMM Documentation
-      nav_fold: false
+      nav_fold: true
     Tutorials:
       name: Tutorials
       nav_fold: false
