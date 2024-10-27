@@ -22,7 +22,7 @@ Please refer to the [Getting Started Guide](https://universalgramm.github.io/get
 
 UGRAMM is a flexibile tool which can be used not only for CGRA mapping but for any application where we need to find embedding of a small graph in a large graph.
 
-In this tutorial we have mapped a digital design input into to Hardware Modules, mapping here corresponds to one-to-one matching of a particular operation from the input digital design to the hardware units available in the device-model.
+In this tutorial, we have mapped a digital design input to hardware modules. Here, mapping refers to the one-to-one correspondence between a specific operation in the smaller input digital design graph and the hardware available in the larger graph, also known as the device model.
 
 <div style="text-align: center;">
   <img src="UGRAMM_inputs.png" alt=" " width="720"/>
@@ -212,13 +212,55 @@ strict digraph  {
 
 ## Running UGRAMM:
 
-UGRAMM mapping algorithm is described in detailed in this paper: https://ieeexplore.ieee.org/document/10296406
+UGRAMM mapping algorithm is described in detailed in this [paper](https://ieeexplore.ieee.org/document/10296406)
 
 ```
 cd tutorial/tut1/
-../../UGRAMM --afile application.dot --dfile device-model.dot --config config.json --verbose_level 0 --seed 0 
-dot -Tpng unpositioned_dot_output.dot -o unpositioned_dot_output.png
-neato -Tpng positioned_dot_output.dot -o positioned_dot_output.png 
+../../UGRAMM --afile application.dot --dfile device-model.dot && dot -Tpng unpositioned_dot_output.dot -o unpositioned_dot_output.png && neato -Tpng positioned_dot_output.dot -o positioned_dot_output.png 
+```
+
+When no `--seed` value is passed to the UGRAMM, a default value of `0` is considered. The same applies to the verbose level of the toolchain. When `--verbose_level` is not specified, a default level of `0` (or `info`) is used. It can also be set to `1` for debug or `2` for trace.
+
+### Output of UGRAMM:
+
+```
+[2024-10-26 21:25:43.738] [UGRAMM] [info] Parsed Device-Model Pragma: 
+[GATE] :: GATE :: AND
+[IO] :: IO :: INPUT :: OUTPUT
+[2024-10-26 21:25:43.739] [UGRAMM] [info] Checking compatibility of SupportedOps of [GATE]
+[2024-10-26 21:25:43.739] [UGRAMM] [info] [PASSED] The token AND found in GATE
+[2024-10-26 21:25:43.739] [UGRAMM] [info] Checking compatibility of SupportedOps of [IO]
+[2024-10-26 21:25:43.739] [UGRAMM] [info] [PASSED] The token INPUT found in IO
+[2024-10-26 21:25:43.739] [UGRAMM] [info] [PASSED] The token OUTPUT found in IO
+[2024-10-26 21:25:43.739] [DRC Checks] [info] --------------------------------------------------
+[2024-10-26 21:25:43.739] [DRC Checks] [info] Executing DRC Rules Check
+[2024-10-26 21:25:43.739] [DRC Checks] [info] --------------------------------------------------
+[2024-10-26 21:25:43.739] [DRC Checks] [info] --------------------------------------------------
+[2024-10-26 21:25:43.739] [DRC Checks] [info] DRC Passed --- Continueing to UGRAMM Mapping
+[2024-10-26 21:25:43.739] [DRC Checks] [info] --------------------------------------------------
+[2024-10-26 21:25:43.739] [UGRAMM] [info] ***** BEGINNING OUTER WHILE LOOP ***** ITER 1
+[2024-10-26 21:25:43.740] [UGRAMM] [info] TOTAL OVERUSE: 0
+[2024-10-26 21:25:43.740] [UGRAMM] [info] FRACTION OVERLAP: 0
+[2024-10-26 21:25:43.740] [UGRAMM] [info] SUCCESS! :: [iterCount] :: 1 :: [frac] :: 0 :: [num_vertices(H)] :: 4
+[2024-10-26 21:25:43.740] [UGRAMM] [info] ** routing for And1 | (GATE1)'s output pin :: 
+[2024-10-26 21:25:43.740] [UGRAMM] [info]        3       GATE1.OUTPINA
+[2024-10-26 21:25:43.740] [UGRAMM] [info]        4       REG1
+[2024-10-26 21:25:43.740] [UGRAMM] [info]        5       IO3.INPINA
+[2024-10-26 21:25:43.740] [UGRAMM] [info] ** routing for Input1 | (IO1)'s output pin :: 
+[2024-10-26 21:25:43.740] [UGRAMM] [info]        8       IO1.OUTPINA
+[2024-10-26 21:25:43.740] [UGRAMM] [info]        12      MUX1
+[2024-10-26 21:25:43.740] [UGRAMM] [info]        14      GATE1.INPINA
+[2024-10-26 21:25:43.740] [UGRAMM] [info] ** routing for Input2 | (IO2)'s output pin :: 
+[2024-10-26 21:25:43.740] [UGRAMM] [info]        11      IO2.OUTPINA
+[2024-10-26 21:25:43.740] [UGRAMM] [info]        13      MUX2
+[2024-10-26 21:25:43.740] [UGRAMM] [info]        15      GATE1.INPINB
+[2024-10-26 21:25:43.740] [UGRAMM] [info] ** routing for Output1 | (IO3)'s output pin :: 
+[2024-10-26 21:25:43.740] [UGRAMM] [info]        Empty vertex model (no-fanouts for the node)
+[2024-10-26 21:25:43.740] [UGRAMM] [info] Writing the positioned mapping output in file 'positioned_dot_output.dot'
+[2024-10-26 21:25:43.740] [UGRAMM] [info] Writing the unpositioned mapping output in file 'unpositioned_dot_output.dot'
+[2024-10-26 21:25:43.740] [UGRAMM] [info] Total time taken for [DRC] :: 0.000156 Seconds
+[2024-10-26 21:25:43.740] [UGRAMM] [info] Total time taken for [mapping] :: 0.000555 Seconds
+[2024-10-26 21:25:43.740] [UGRAMM] [info] Total time taken for [UGRAMM]:: 0.001951 Seconds
 ```
 
 ### unpositioned_dot_output 
