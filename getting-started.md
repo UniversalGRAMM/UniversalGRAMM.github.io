@@ -88,14 +88,13 @@ The script performs the following operations in sequence:
 
 The UGRAMM repository includes a variety of benchmarks for CGRA applications in the `Kernels/` folder, featuring benchmarks like Stencil, Convolution, and FFT. The following command maps the `conv_nounroll_Balance` benchmark onto an 8x8 RIKEN CGRA using a seed value of 15. After executing this command, the mapped output results should be available in the root directory of UGRAMM:
 
-{: .note-title }
-> 
->
-> ./run_ugramm.sh 15 8 8 Kernels/Conv_Balance/conv_nounroll_Balance.dot config.json
+```
+./run_ugramm.sh 15 8 8 Kernels/Conv_Balance/conv_nounroll_Balance.dot config.json
+```
 
 ### **positioned_dot_output**: 
 
-    - This dot-file contains user provided co-ordinates of the device-model node cells.
+This dot-file contains user provided co-ordinates of the device-model node cells.
 
 <div style="text-align: center;">
     <img src="assets/positioned_dot_output.png" alt="Fig 1. positioned_dot_output" style="border: 1px solid black; width: 400px;">
@@ -104,8 +103,7 @@ The UGRAMM repository includes a variety of benchmarks for CGRA applications in 
 
 ### **unpositioned_dot_output**: 
 
-    - This dot-file does not contains user provided co-ordinates of the device-model node cells. 
-    - This file also displays the input application graph for which UGRAMM was executed.
+This dot-file does not contains user provided co-ordinates of the device-model node cells. This file also displays the input application graph for which UGRAMM was executed.
 
 <div style="text-align: center;">
     <img src="assets/unpositioned_dot_output.png" alt="Fig 2. unpositioned_dot_output" style="border: 1px solid black; width: 600px;">
