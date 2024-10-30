@@ -62,8 +62,6 @@ Load_1 -> FMUL_10  [driver=outPinA, load="inPinA"];
 |---------------|------------------------|-------------------|-------------------------------------------------------------------------------------------------------|--------------------------------------|
 | Node          | **Required**           | **label**         | Specifies the operation name in the application graph.                                               | `label="{Load_0}"`                  |
 | Node          | **Required**           | **opcode**        | Specifies the operation's opcode, indicating its functionality.                                       | `opcode="input"`                     |
-| Node          | Optional           | **placementX**    | Fixed X-coordinate for node placement in the graphical representation.                                | `placementX="2.0"`                  |
-| Node          | Optional           | **placementY**    | Fixed Y-coordinate for node placement in the graphical representation.                                | `placementY="5.0"`                  |
 | Node          | Optional           | **width**         | Specifies the width of the node for graphical representation.                                         | `width="5"`                          |
 | Edge          | **Required**           | **driver**        | Specifies the driver pin to use for the edge connection.                                             | `driver="outPinA"`                  |
 | Edge          | **Required**           | **load**          | Specifies the load pin to use for the edge connection.                                               | `load="inPinA"`                      |
