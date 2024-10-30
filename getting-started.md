@@ -61,7 +61,7 @@ A helper script (`run_ugramm.sh`) has been created to simplify the execution of 
 ❯ ./run_ugramm.sh --help
 This helper script will generate a specific CGRA device model file based on user input; Compile, and run UGRAMM with the generated device model file as input. It will also convert the output of UGRAMM into PNG format for easier debugging and visualization.
 Usage: ./run_ugramm.sh [SEED] [NR] [NC] [APPLICATION_GRAPH] [CONFIG_FILE]
-Example: ./run_ugramm.sh 15 8 8 Kernels/Conv_Balance/conv_nounroll_Balance.dot config.json
+Example: ./run_ugramm.sh 15 8 8 Kernels/Conv_Balance/conv_nounroll_Balance_Specific.dot config.json
 ```
 
 The script performs the following operations in sequence:
@@ -73,7 +73,7 @@ The script performs the following operations in sequence:
 
 2. **Execute UGRAMM** and produce mapping results in `positioned_dot_output.dot` and `unpositioned_dot_output.dot`:
     ```bash
-    make && ./UGRAMM --seed 15 --verbose_level 0 --dfile scripts/riken_8_8.dot --afile Kernels/Conv_Balance/conv_nounroll_Balance.dot --config config.json
+    make && ./UGRAMM --seed 15 --verbose_level 0 --dfile scripts/riken_8_8.dot --afile Kernels/Conv_Balance/conv_nounroll_Balance_Specific.dot --config config.json
     ```
 
 3. **Convert the mapped output DOT files into PNG format**:
@@ -89,7 +89,7 @@ The script performs the following operations in sequence:
 The UGRAMM repository includes a variety of benchmarks for CGRA applications in the `Kernels/` folder, featuring benchmarks like Stencil, Convolution, and FFT. The following command maps the `conv_nounroll_Balance` benchmark onto an 8x8 RIKEN CGRA using a seed value of 15. After executing this command, the mapped output results should be available in the root directory of UGRAMM:
 
 ```
-./run_ugramm.sh 15 8 8 Kernels/Conv_Balance/conv_nounroll_Balance.dot config.json
+./run_ugramm.sh 15 8 8 Kernels/Conv_Balance/conv_nounroll_Balance_Specific.dot config.json
 ```
 
 ### **positioned_dot_output**: 

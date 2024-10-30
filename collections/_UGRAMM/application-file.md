@@ -13,51 +13,74 @@ permalink: /UGRAMM-Documentations/application-file
     <figcaption style="font-size: 14px; color: #555;">Fig 1. Data Flow Graph (DFG) Example</figcaption>
 </div>
 
-- In a CGRA, the input application is usually represented as a Data Flow Graph (DFG), where vertices correspond to operations like ADD, SUB, and MUL, and the edges between these vertices indicate the dependencies among these operations.
-
-- UGRAMM comes with various CGRA benchmarks designed for HPC applications, including Convolution, FFT, and Stencil, with both Balanced and Unbalanced versions. Additionally, each benchmark type supports different unrolling factors ranging from 1 to 10.
+In a CGRA, the input application is usually represented as a Data Flow Graph (DFG), where vertices correspond to operations like ADD, SUB, and MUL, and the edges between these vertices indicate the dependencies among these operations. UGRAMM comes with various CGRA benchmarks designed for HPC applications, including Convolution, FFT, and Stencil, with both Balanced and Unbalanced versions. Additionally, each benchmark type supports different unrolling factors ranging from 1 to 10.
 
 ```
 ├── Kernels
-│   ├── Conv_Balance
-│   │   ├── conv_nounroll_Balance.dot
-│   │   ├── conv_nounroll.dot
-│   │   ├── conv_unroll2_Balance.dot
-│   │   ├── conv_unroll2.dot
-│   │   ├── conv_unroll3_Balance.dot
-│   │   └── conv_unroll3.dot
-│   ├── Conv_nonBalance
-│   ├── FFT-Radix
-│   │   ├── FFT-Radix-4
-│   │   └── FFT-Radix-5
-│   ├── Stencil_Balance
-│   └── Stencil_nonBalance
+├── Conv_nonBalance
+├── Stencil_Balance
+└── Stencil_nonBalance
+├── Conv_nonBalance
+│   ├── conv_nounroll_Any.dot
+│   ├── conv_nounroll_nonBalance_Any.dot
+│   ├── conv_nounroll_nonBalance_Specific.dot
+│   ├── conv_nounroll_Specific.dot
+│   ├── conv_unroll2_Any.dot
+│   ├── conv_unroll2_nonBalance_Any.dot
+│   ├── conv_unroll2_nonBalance_Specific.dot
+│   ├── conv_unroll2_Specific.dot
+│   ├── conv_unroll3_Any.dot
+│   ├── conv_unroll3_nonBalance_Any.dot
+│   ├── conv_unroll3_nonBalance_Specific.dot
+│   └── conv_unroll3_Specific.dot
+├── FFT-Radix-4
+│   ├── fft_radix4_Any.dot
+│   ├── fft_radix4_Specific.dot
+│   ├── fft_radix4_unroll2_Any.dot
+│   └── fft_radix4_unroll2_Specific.dot
+├── FFT-Radix-5
+│   ├── fft_radix5_Any.dot
+│   └── fft_radix5_Specific.dot
 ```
 
 - These benchmarks are defined in the Graphviz DOT format [(ref)](https://graphviz.org/doc/info/lang.html). 
 
 ```
 //Node/Vertex definition:
-Load_0 [label="{Load_0}", opcode=input, shape=record]; 
-FMUL_9 [label="{FMUL_9}", opcode=FMUL, shape=record, type=op];
+FADD_19 [label="{FADD_19}", opcode=FADD, width=32];
+FADD_18 [label="{FADD_18}", opcode=FADD, width=32];
 
 //Edge definition:
-Load_0 -> FMUL_9  [driver=outPinA, load=inPinA]; 
+Load_0 -> FMUL_9  [driver=outPinA, load="inPinA"];
+Load_1 -> FMUL_10  [driver=outPinA, load="inPinA"];
 ```
 
 ## Required and optional attributes in application-dot file.
 
-- As shown above, vertices and edges have specific attributes or properties. Some attributes are essential for GRAMM to function correctly.
-    - Node Attributes:
-        - **label**: **[Required]** Specifies the operation name in the application graph (e.g., `[label="{Load_0}"]`).
-        - **opcode**: **[Required]** Specifies the operation's opcode (e.g., `[opcode="input"]`).
-        - **placementX**: **[Optional]** Specifies the fixed X-coordinate for node placement (e.g., `[placementX="2.0"]`).
-        - **placementY**: **[Optional]** Specifies the fixed Y-coordinate for node placement (e.g., `[placementY="5.0"]`).
-    - Edge Attributes:
-        - **driver**: **[Required]** Specifies the driver pin to use for the edge (e.g., `[driver="outPinA"]`).
-        - **load**: **[Required]** Specifies the load pin to use for the edge (e.g., `[load="inPinA"]`).
-        - **Example**: `Load_0 -> FMUL_9 [driver=outPinA, load=inPinA];`
-            - In this example, UGRAMM selects the `outPinA` of the device-model node where `Load_0` is mapped and routes it to the `inPinA` of the device-model node where `FMUL_9` is mapped.
-            - For UGRAMM to function as expected, the device model must have nodes with pins defined as `outPinA`, `inPinA`, `B`, etc.
-        - **latency**: **[Optional]** Specifies the latency requirement for the edge (e.g., `[latency="2.0"]`).
-- The **[Required]** node and edge attributes must be clearly defined in the `application.dot` file when used as an afile input to ensure UGRAMM functions correctly.
+
+| **Type**      | **Required/Optional** | **Attribute**     | **Description**                                                                                       | **Example**                          |
+|---------------|------------------------|-------------------|-------------------------------------------------------------------------------------------------------|--------------------------------------|
+| Node          | **Required**           | **label**         | Specifies the operation name in the application graph.                                               | `label="{Load_0}"`                  |
+| Node          | **Required**           | **opcode**        | Specifies the operation's opcode, indicating its functionality.                                       | `opcode="input"`                     |
+| Node          | Optional           | **placementX**    | Fixed X-coordinate for node placement in the graphical representation.                                | `placementX="2.0"`                  |
+| Node          | Optional           | **placementY**    | Fixed Y-coordinate for node placement in the graphical representation.                                | `placementY="5.0"`                  |
+| Node          | Optional           | **width**         | Specifies the width of the node for graphical representation.                                         | `width="5"`                          |
+| Edge          | **Required**           | **driver**        | Specifies the driver pin to use for the edge connection.                                             | `driver="outPinA"`                  |
+| Edge          | **Required**           | **load**          | Specifies the load pin to use for the edge connection.                                               | `load="inPinA"`                      |
+| Edge          | Optional           | **latency**       | Specifies the latency requirement for the edge.                                                      | `latency="2.0"`                     |
+
+**Example Usage**: `Load_0 -> FMUL_9 [driver=outPinA, load=inPinA];`  
+In this example, UGRAMM selects the `outPinA` of the device-model node where `Load_0` is mapped and routes it to the `inPinA` of the device-model node where `FMUL_9` is mapped. For UGRAMM to function as expected, the device model must have nodes with pins defined as `outPinA`, `inPinA`, `B`, etc.
+
+<div style="text-align: center;">
+    <img src="../../assets/edge-attribute.png" alt="Fig 2. edge-attribute Example" style="border: 1px solid black; width: 250px;">
+    <figcaption style="font-size: 14px; color: #555;">Fig 2. edge-attribute Example</figcaption>
+</div>
+
+The **[Required]** node and edge attributes must be clearly defined in the `application.dot` file (when used as an `afile` input) to ensure UGRAMM operates correctly.
+
+Each CGRA-benchmark has two version in UGRAMM:
+  - **Any**: In this type, `loadPins` are not specified or constrained and default to `Any2Pins`. This serves as a useful comparison point with the classic GRAMM model.
+  - **Specific**: This type includes benchmark where only a single `loadPin` is specified.
+
+Also, supported operations for both device-model and application-graph are defined as `pragma` which is defined within dot file itself which is covered [here](/UGRAMM-Documentations/Supported-Pragmas)

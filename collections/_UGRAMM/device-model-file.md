@@ -8,11 +8,9 @@ permalink: /UGRAMM-Documentations/device-model-file
 
 # Device model input:
 
-- The device model graph is a larger graph used to determine whether the application graph is a minor of it. As the name suggests, the device model dot file represents the graphical format of the hardware architecture onto which we aim to map the input application.
+The device model graph is a larger graph used to determine if the application graph is a minor of it. As implied by its name, the device model dot file captures the graphical representation of the hardware architecture targeted for mapping the input application. CGRA architectures, such as RIKEN and ADRES, can be converted into this graphical dot format. To streamline the process of generating these graphical dot files, a script (`scripts/device-model-gen.py`) has been developed to easily create dot graph format files for standard CGRAs. Currently, this script supports RIKEN and ADRES ***[Work In Progess]*** architectures.
 
-- CGRA architectures such as RIKEN and ADRES can be converted into graphical dot format. To simplify the generation of graphical dot files of these architectures, we have created a script in `scripts/device-model-gen.py` that can easily generate a dot graph format file for standard CGRAs, and right now it supports RIKEN and ADRES architectures.
-
-- The following section will explain how the script functions and how the architecture is represented in graph format, which may inspire the creation of a similar script for new GRAMM applications requiring automated device model generation.
+The next section will provide an overview of how the script operates and represents the architecture in graph format. This information may serve as a foundation for creating similar scripts tailored to new GRAMM applications that require automated device model generation.
 
 ## Device model generation script:
 - **Usage:** `device_model_gen.py [-h] [-NR NR] [-NC NC] [-Arch ARCH]`
@@ -55,10 +53,15 @@ permalink: /UGRAMM-Documentations/device-model-file
 
 ## Required and optional attributes in device-model dot file:
 
-- As shown above, vertices have specific attributes or properties. Some attributes are essential for UGRAMM to function correctly.
-    - **G_Name**: **[Required]** Contains the unique name of the cell in the device model graph.
-    - **G_CellType**: **[Required]** Contains the cell type (FuncCell, RouteCell, PinCell).
-    - **G_NodeType**: **[Required]** Contains the node type (e.g., for FuncCell, NodeTypes can include ALU, MEMPORT).
-    - **G_VisualX**: **[Optional]** X location for visualization purposes.
-    - **G_VisualY**: **[Optional]** Y location for visualization purposes.
-- The **[Required]** node attributes must be clearly defined in the `device-model.dot` file when used as a `dfile` input to ensure that UGRAMM functions correctly.
+| **Required/Optional** | **Attribute**   | **Description**                                                                                       | **Example**                         |
+|------------------------|-----------------|-------------------------------------------------------------------------------------------------------|-------------------------------------|
+|**Required**               | **G_Name**      | Unique name of the cell in the device model graph.                                                    | `G_Name="pe.w32.c1.r0.alu"`        |
+| **Required**               | **G_CellType**  | Type of the cell, specifying its function (`FuncCell`, `RouteCell`, or `PinCell`).                    | `G_CellType="FuncCell"`            |
+| **Required**               | **G_NodeType**  | Node type within the cell (e.g., `ALU`, `MEMPORT` for `FuncCell`).                                    | `G_NodeType="ALU"`                 |
+| Optional               | **G_VisualX**   | X location for visualization purposes.                                                                | `G_VisualX="10"`                   |
+| Optional               | **G_VisualY**   | Y location for visualization purposes.                                                                | `G_VisualY="5"`                    |
+| Optional               | **G_Width**     | Width of the hardware node.                                                                           | `G_Width="32"`                     |
+
+The **[Required]** attributes must be defined in the `device-model.dot` file (`dfile` input) to ensure UGRAMM operates correctly.
+
+Also, supported operations for both device-model and application-graph are defined as `pragma` which is defined within dot file itself which is covered [here](/UGRAMM-Documentations/Supported-Pragmas)

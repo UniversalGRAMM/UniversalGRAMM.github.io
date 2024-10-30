@@ -28,6 +28,8 @@ In this tutorial, we have mapped a digital design input to hardware modules. Her
   <img src="UGRAMM_inputs.png" alt=" " width="720"/>
 </div>
 
+--- 
+
 ## Application-dot file:
 
 <div style="text-align: center;">
@@ -51,23 +53,24 @@ In this tutorial, we have mapped a digital design input to hardware modules. Her
   
 As illustrated in Fig 1, the digital circuit design of a two-input AND gate can also be represented in [Graphviz dot format](https://graphviz.org/doc/info/lang.html). The conversion of this circuit into dot format is provided below in the provided code snippet, along with the graph output shown in Fig 2.
 
-In the application dot file, all nodes are classified as **Function Cells (FuncCells)** according to the UGRAMM framework. For more details, refer to the defined cell types of UGRAMM [here](https://universalgramm.github.io/node-type.html).
+In the application dot file, all nodes are classified as **Function Cells (FuncCells)** according to the UGRAMM framework. For more details, refer to the defined cell types of UGRAMM [here](/UGRAMM-Documentations/node-type).
 
 ### PRAGMA Section
 
-The dot file begins with a **PRAGMA** statement, which is followed by the main content of the dot file. The PRAGMA specifies the supported operations for a FuncCell in a format defined by UGRAMM. More information about the supported pragmas can be found [here](https://universalgramm.github.io/Supported-Pragmas.html). 
+The dot file begins with a **PRAGMA** statement, which is followed by the main content of the dot file. The PRAGMA specifies the supported operations for a FuncCell in a format defined by UGRAMM. More information about the supported pragmas can be found [here](/UGRAMM-Documentations/Supported-Pragmas.html). 
 
 For instance, a gate is represented as a FuncCell in the application file. A supported operation for this gate is AND, which is defined in the PRAGMA as follows:
 
-> [SupportedOps] = {GATE, AND}; // [Keyword] = {FuncCell, SupportedOp1, SupportedOp2...};
+> "GATE" : ["AND"]
 
 ### Application Dot Attributes Overview
 
 | **Type**      | **Attribute** | **Description**                                                      | **Example**                        |
 |---------------|---------------|----------------------------------------------------------------------|------------------------------------|
-| Node          | **label**     | The display name of the node, shown in graphical representations.   | `label="Input1"`                  |
-| Node          | **opcode**    | Specifies the opcode of the FuncCell, indicating its functionality.   | `opcode=INPUT` or `opcode=AND`                   |
-| Edge          | **driver**    | Specifies the driver pin to use for the connection  | `driver="outPinA"`                |
+| Node          | **label**     | The display name of the node, shown in graphical representations.   | `label="Input1"`                    |
+| Node          | **opcode**    | Specifies the opcode of the FuncCell, indicating its functionality.   | `opcode=INPUT` or `opcode=AND`    |
+| Node          | **width**     | Specifies the width of the node for graphical representation.         | `width="5"`  |
+| Edge          | **driver**    | Specifies the driver pin to use for the connection  | `driver="outPinA"`             |
 | Edge          | **load**      | Specifies the load pin to use for the connection | `load="inPinA"`                   |
 
 - **Example:** `Input1 -> And1  [driver="outPinA", load="inPinA"];`
@@ -77,9 +80,11 @@ For instance, a gate is represented as a FuncCell in the application file. A sup
 
 
 ```js
- /* ------- Application graph pragma ------- 
-[SupportedOps] = {GATE, AND};           //Supported Operation by "GATE" FuncCell is "AND" 
-[SupportedOps] = {IO, INPUT, OUTPUT};   //Supported Operations by "IO" FuncCell are "INPUT", "OUTPUT"
+/*
+{
+    "GATE" : ["AND"],
+    "IO" : ["INPUT", "OUTPUT"]
+}
 */
 strict digraph "tutorialUGRAMM" {
 
@@ -96,6 +101,7 @@ And1 -> Output  [driver="outPinA", load="inPinA"];
 }
 ```
 
+--- 
 
 ## Device-model file:
 
@@ -129,9 +135,11 @@ It is important to ensure that the operations defined in the device model align 
 For example, the PRAGMA section is defined as follows:
 
 ```js
-/* ------- Device model pragma ------- 
-[SupportedOps] = {GATE, AND};  
-[SupportedOps] = {IO, INPUT, OUTPUT};
+/*
+{
+    "GATE" : ["AND"],
+    "IO" : ["INPUT", "OUTPUT"]
+}
 */
 ```
 
@@ -144,37 +152,40 @@ For example, the PRAGMA section is defined as follows:
 | Required          | **G_NodeType**| Indicates the opCode of the node in the architecture (e.g., PinCell supports IN, OUT).| `G_NodeType="IN"`                  |
 | Optional          | **G_VisualX** | The X-coordinate for visual representation in the layout.          | `G_VisualX="0"`                    |
 | Optional          | **G_VisualY** | The Y-coordinate for visual representation in the layout.          | `G_VisualY="3"`                    |
+| Optional               | **G_Width**     | Width of the hardware node.                                                                           | `G_Width="32"`                     |
 
 <details>
 <summary> <b> Device Model Pragma Code </b> </summary>
 <div class="code-example" markdown="1">
 ```js
-/* ------- Device model pragma ------- 
-[SupportedOps] = {GATE, AND};  
-[SupportedOps] = {IO, INPUT, OUTPUT};
+/*
+{
+    "GATE" : ["AND"],
+    "IO" : ["INPUT", "OUTPUT"]
+}
 */
 strict digraph  {
-0  [G_Name="IO1.inPinA", G_CellType="PinCell", G_NodeType="IN", G_VisualX="0", G_VisualY="3"];
-1  [G_Name="IO1", G_CellType="FuncCell", G_NodeType="IO", G_VisualX="0.75", G_VisualY="3"];
-2  [G_Name="IO1.outPinA", G_CellType="PinCell", G_NodeType="OUT", G_VisualX="1.5", G_VisualY="3"];
+0  [G_Name="IO1.inPinA", G_CellType="PinCell", G_NodeType="IN", G_VisualX="0", G_VisualY="3", G_Width="32"];
+1  [G_Name="IO1", G_CellType="FuncCell", G_NodeType="IO", G_VisualX="0.75", G_VisualY="3", G_Width="32"];
+2  [G_Name="IO1.outPinA", G_CellType="PinCell", G_NodeType="OUT", G_VisualX="1.5", G_VisualY="3", G_Width="32"];
 
-3  [G_Name="IO2.inPinA", G_CellType="PinCell", G_NodeType="IN", G_VisualX="0", G_VisualY="1"];
-4  [G_Name="IO2", G_CellType="FuncCell", G_NodeType="IO", G_VisualX="0.75", G_VisualY="1"];
-5  [G_Name="IO2.outPinA", G_CellType="PinCell", G_NodeType="OUT", G_VisualX="1.5", G_VisualY="1"];
+3  [G_Name="IO2.inPinA", G_CellType="PinCell", G_NodeType="IN", G_VisualX="0", G_VisualY="1", G_Width="32"];
+4  [G_Name="IO2", G_CellType="FuncCell", G_NodeType="IO", G_VisualX="0.75", G_VisualY="1", G_Width="32"];
+5  [G_Name="IO2.outPinA", G_CellType="PinCell", G_NodeType="OUT", G_VisualX="1.5", G_VisualY="1", G_Width="32"];
 
-6 [G_Name="MUX1", G_CellType="RouteCell", G_NodeType="MUX", G_VisualX="2.5", G_VisualY="3"];
-7 [G_Name="MUX2", G_CellType="RouteCell", G_NodeType="MUX", G_VisualX="2.5", G_VisualY="1"];
+6 [G_Name="MUX1", G_CellType="RouteCell", G_NodeType="MUX", G_VisualX="2.5", G_VisualY="3", G_Width="32"];
+7 [G_Name="MUX2", G_CellType="RouteCell", G_NodeType="MUX", G_VisualX="2.5", G_VisualY="1", G_Width="32"];
 
-8  [G_Name="Gate1.inPinA", G_CellType="PinCell", G_NodeType="IN", G_VisualX="3", G_VisualY="3"];
-9  [G_Name="Gate1.inPinB", G_CellType="PinCell", G_NodeType="IN", G_VisualX="3", G_VisualY="1"];
-10  [G_Name="Gate1", G_CellType="FuncCell", G_NodeType="GATE", G_VisualX="3.75", G_VisualY="2"];
-11  [G_Name="Gate1.outPinA", G_CellType="PinCell", G_NodeType="OUT", G_VisualX="4.5", G_VisualY="2"];
+8  [G_Name="Gate1.inPinA", G_CellType="PinCell", G_NodeType="IN", G_VisualX="3", G_VisualY="3", G_Width="32"];
+9  [G_Name="Gate1.inPinB", G_CellType="PinCell", G_NodeType="IN", G_VisualX="3", G_VisualY="1", G_Width="32"];
+10  [G_Name="Gate1", G_CellType="FuncCell", G_NodeType="GATE", G_VisualX="3.75", G_VisualY="2", G_Width="32"];
+11  [G_Name="Gate1.outPinA", G_CellType="PinCell", G_NodeType="OUT", G_VisualX="4.5", G_VisualY="2", G_Width="32"];
 
-12 [G_Name="REG1", G_CellType="RouteCell", G_NodeType="REG", G_VisualX="5.5", G_VisualY="2"];
+12 [G_Name="REG1", G_CellType="RouteCell", G_NodeType="REG", G_VisualX="5.5", G_VisualY="2", G_Width="32"];
 
-13  [G_Name="IO3.inPinA", G_CellType="PinCell", G_NodeType="IN", G_VisualX="6", G_VisualY="2"];
-14  [G_Name="IO3", G_CellType="FuncCell", G_NodeType="IO", G_VisualX="6.75", G_VisualY="2"];
-15  [G_Name="IO3.outPinA", G_CellType="PinCell", G_NodeType="OUT", G_VisualX="7.5", G_VisualY="2"];
+13  [G_Name="IO3.inPinA", G_CellType="PinCell", G_NodeType="IN", G_VisualX="6", G_VisualY="2", G_Width="32"];
+14  [G_Name="IO3", G_CellType="FuncCell", G_NodeType="IO", G_VisualX="6.75", G_VisualY="2", G_Width="32"];
+15  [G_Name="IO3.outPinA", G_CellType="PinCell", G_NodeType="OUT", G_VisualX="7.5", G_VisualY="2", G_Width="32"];
 
 
 //1st I/O layer:
@@ -210,13 +221,31 @@ strict digraph  {
 </div>
 </details>
 
+--- 
+
+## Config file for Locking:
+
+> **Config file Location:** `UGRAMM/tutorial/tut1/config.json`
+
+UGRAMM enables locking specific nodes from the application graph to designated nodes in the device model graph. Additional details on this process are available [here](/UGRAMM-Documentations/config-file/node-locking). Below is the configuration file for this tutorial:
+
+```
+{
+    "lock-nodes" : ["Input1::IO1", "Input2::IO2"]
+}
+```
+
+In this configuration, the `Input1` node from the application graph is locked to the `IO1` node in the device model, and similarly, `Input2` is locked to `IO2`. These constraints are prioritized during routing, guiding the output mapping according to the locking information. As shown in the output, `Input1` is mapped to `IO1` and `Input2` to `IO2` as specified.
+
+--- 
+
 ## Running UGRAMM:
 
 UGRAMM mapping algorithm is described in detailed in this [paper](https://ieeexplore.ieee.org/document/10296406)
 
 ```
 cd tutorial/tut1/
-../../UGRAMM --afile application.dot --dfile device-model.dot && dot -Tpng unpositioned_dot_output.dot -o unpositioned_dot_output.png && neato -Tpng positioned_dot_output.dot -o positioned_dot_output.png 
+../../UGRAMM --config config.json --afile application.dot --dfile device-model.dot && dot -Tpng unpositioned_dot_output.dot -o unpositioned_dot_output.png && neato -Tpng positioned_dot_output.dot -o positioned_dot_output.png 
 ```
 
 When no `--seed` value is passed to the UGRAMM, a default value of `0` is considered. The same applies to the verbose level of the toolchain. When `--verbose_level` is not specified, a default level of `0` (or `info`) is used. It can also be set to `1` for debug or `2` for trace.
