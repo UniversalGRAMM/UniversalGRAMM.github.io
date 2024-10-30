@@ -245,7 +245,7 @@ UGRAMM mapping algorithm is described in detailed in this [paper](https://ieeexp
 
 ```
 cd tutorial/tut1/
-../../UGRAMM --config config.json --afile application.dot --dfile device-model.dot && dot -Tpng unpositioned_dot_output.dot -o unpositioned_dot_output.png && neato -Tpng positioned_dot_output.dot -o positioned_dot_output.png 
+./../../UGRAMM --config config.json --afile application.dot --dfile device-model.dot && dot -Tpng unpositioned_dot_output.dot -o unpositioned_dot_output.png && neato -Tpng positioned_dot_output.dot -o positioned_dot_output.png 
 ```
 
 When no `--seed` value is passed to the UGRAMM, a default value of `0` is considered. The same applies to the verbose level of the toolchain. When `--verbose_level` is not specified, a default level of `0` (or `info`) is used. It can also be set to `1` for debug or `2` for trace.
