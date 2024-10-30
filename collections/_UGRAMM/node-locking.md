@@ -64,5 +64,4 @@ To enable wildcard locking, users must set the `allowWildcardInLocking` define s
 allowWildcardInLocking 1
 ```
 
-
 As this adjustment modifies a define statement, it is highly recommended to run `make clean` before running `make` again to avoid the executable from crashing.
