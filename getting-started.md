@@ -26,6 +26,7 @@ cd UGRAMM && make
 The required and optional arguments for UGRAMM are as follows:
 
 ```
+./UGRAMM --help
 [UGRAMM] allowed options =:
   -h [ --help ]           Print help messages
   --seed arg              Seed for the run [optional]
@@ -34,6 +35,8 @@ The required and optional arguments for UGRAMM are as follows:
   --afile arg             Application graph file [required]
   --config arg            UGRAMM config file [optional]
   --drc_disable           disable DRC [optional]
+  --max_iter arg          Maximum number of iterations UGRAMM will run
+                          [optional; defaults to 40]
   --pfac_mul arg          Multiplier for present congestion cost [optional;
                           defaults to 1.1]
   --hfac_mul arg          Multiplier for history congestion cost [optional;
